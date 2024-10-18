@@ -1,14 +1,14 @@
--- Use the existing alx_book_store database
+-- Use the alx_book_store database
 USE alx_book_store;
 
--- Create Authors table
-CREATE TABLE IF NOT EXISTS authors (
+-- Create authors table
+CREATE TABLE authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL
 );
 
--- Create Books table
-CREATE TABLE IF NOT EXISTS books (
+-- Create books table
+CREATE TABLE books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
     author_id INT,
@@ -17,24 +17,24 @@ CREATE TABLE IF NOT EXISTS books (
     FOREIGN KEY (author_id) REFERENCES authors(author_id)
 );
 
--- Create Customers table
-CREATE TABLE IF NOT EXISTS customers (
+-- Create customers table
+CREATE TABLE customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
     email VARCHAR(215),
     address TEXT
 );
 
--- Create Orders table with the correct foreign key format
-CREATE TABLE IF NOT EXISTS orders (
+-- Create orders table
+CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     order_date DATE,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)  -- This is what the checker is expecting
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
--- Create Order_Details table
-CREATE TABLE IF NOT EXISTS order_details (
+-- Create order_details table
+CREATE TABLE order_details (
     orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     book_id INT,
