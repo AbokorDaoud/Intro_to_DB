@@ -14,7 +14,7 @@ CREATE TABLE books (
     author_id INT,
     price DOUBLE,
     publication_date DATE,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id)  -- Foreign key referencing authors table
+    FOREIGN KEY (author_id) REFERENCES authors(author_id)
 );
 
 -- Create Customers table
@@ -25,12 +25,12 @@ CREATE TABLE customers (
     address TEXT
 );
 
--- Create Orders table
+-- Create Orders table (with the correct foreign key constraint)
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     order_date DATE,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)  -- Foreign key referencing customers table
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)  -- Correct foreign key reference
 );
 
 -- Create Order_Details table
@@ -39,6 +39,6 @@ CREATE TABLE order_details (
     order_id INT,
     book_id INT,
     quantity DOUBLE,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),  -- Foreign key referencing orders table
-    FOREIGN KEY (book_id) REFERENCES books(book_id)  -- Foreign key referencing books table
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
