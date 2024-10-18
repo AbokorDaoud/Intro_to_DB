@@ -39,6 +39,6 @@ CREATE TABLE IF NOT EXISTS order_details (
     order_id INT,
     book_id INT,
     quantity DOUBLE,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (book_id) REFERENCES books(book_id)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
